@@ -181,8 +181,7 @@ Common growth rates:
 
 O(1) < O(log n) < O(n) < O(n log n) < O(n^2)
 
-One loop                         -> O(n)
-Two separate loops              -> O(n)
+One loop                         -> O(n) 
 Two nested loops                -> O(n^2)
 Repeatedly double/divide by 2    -> O(log n)
 O(n) loop containing O(log n)   -> O(n log n)
