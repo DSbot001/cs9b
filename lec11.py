@@ -735,6 +735,7 @@ KEY IDEAS
        node.next = otherNode
 
     The lecture uses getters and setters to practice encapsulation.
+<<<<<<< HEAD
 """
 
 
@@ -789,3 +790,4 @@ def test_bubbleSort():
 	assert list3 == []
 	bubbleSort(list4)
 	assert list4 == [1,3,5,6,7]
+
