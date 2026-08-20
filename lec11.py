@@ -315,96 +315,9 @@ class OrderedLinkedList:
         return " ".join(values)
 
 
-# ============================================================
-# PART 4: HOW ORDERED add() WORKS
-# ============================================================
-
-"""
-Suppose the list is:
-
-    head -> 5 -> 15 -> 25 -> 40 -> None
-
-We want to add 20.
-
-Traversal begins with:
-
-    previous = None
-    current  = Node(5)
-
-After checking 5:
-
-    previous = Node(5)
-    current  = Node(15)
-
-After checking 15:
-
-    previous = Node(15)
-    current  = Node(25)
-
-We stop because:
-
-    25 > 20
-
-Therefore, 20 belongs between previous and current:
-
-    previous       newNode       current
-        |              |             |
-       15             20            25
-
-The connections are changed with:
-
-    newNode.setNext(current)
-    previous.setNext(newNode)
-
-Result:
-
-    head -> 5 -> 15 -> 20 -> 25 -> 40 -> None
 
 
-The same add() method handles all three positions:
 
-1. INSERT AT FRONT
-
-    previous is None
-    current is the old head
-
-    Before:
-        head -> 5 -> 15 -> None
-
-    Add 2:
-
-        head -> 2 -> 5 -> 15 -> None
-
-
-2. INSERT IN MIDDLE
-
-    previous and current are both Node objects
-
-    Before:
-        head -> 5 -> 15 -> 25 -> None
-
-    Add 20:
-
-        head -> 5 -> 15 -> 20 -> 25 -> None
-
-
-3. INSERT AT END
-
-    previous is the old final node
-    current is None
-
-    Before:
-        head -> 5 -> 15 -> 25 -> None
-
-    Add 50:
-
-        head -> 5 -> 15 -> 25 -> 50 -> None
-"""
-
-
-# ============================================================
-# PART 5: TESTING THE ORDERED LINKED LIST
-# ============================================================
 
 def test_insertIntoOrderedList():
     ll = OrderedLinkedList()
@@ -497,8 +410,8 @@ That takes O(n).
 We can also store a tail reference:
 
     head -> 5 -> 15 -> 25 -> None
-                         |
-                        tail
+                        |
+                       tail
 
 tail always refers to the final Node object.
 
@@ -554,73 +467,7 @@ class LinkedListWithTail:
         return " ".join(values)
 
 
-# ============================================================
-# PART 7: HOW tail WORKS
-# ============================================================
 
-"""
-Suppose the list is:
-
-    head -> 5 -> 15 -> 25 -> None
-                         |
-                        tail
-
-We add 30:
-
-    newNode = Node(30)
-
-The new node initially exists separately:
-
-    newNode -> 30 -> None
-
-
-FIRST:
-
-    self.tail.setNext(newNode)
-
-Because self.tail refers to Node(25), this is equivalent to:
-
-    25.next = newNode
-
-Now the new node is connected:
-
-    head -> 5 -> 15 -> 25 -> 30 -> None
-
-However, tail still refers to Node(25).
-
-
-SECOND:
-
-    self.tail = newNode
-
-Now tail refers to Node(30):
-
-    head -> 5 -> 15 -> 25 -> 30 -> None
-                               |
-                              tail
-
-
-The lines perform two different jobs:
-
-    self.tail.setNext(newNode)  # Connect the old tail
-    self.tail = newNode         # Update the tail reference
-
-
-The order matters.
-
-Incorrect order:
-
-    self.tail = newNode
-    self.tail.setNext(newNode)
-
-This would make the new node point to itself and would lose the
-connection from the old tail.
-"""
-
-
-# ============================================================
-# PART 8: TESTING THE TAIL REFERENCE
-# ============================================================
 
 def test_linkedListWithTail():
     ll = LinkedListWithTail()
