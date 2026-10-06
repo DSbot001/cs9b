@@ -181,7 +181,7 @@ s.setName("Dylan Wawa")
 s.setPerm("A3J2V09")
 s.printAttributes()
     
-'''Shallow Copy vs Deep Copy
+'''Shallow Equality vs Deep Equality
 
-Shallow Copy: Comparing address
-Deep Copy: Comparing values'''
+Shallow Equality: Comparing address
+Deep Equality: Comparing values'''
