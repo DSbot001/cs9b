@@ -145,3 +145,43 @@ print(player1.points_arr)  # []
 
 # player2 contains the new score
 print(player2.points_arr)  # [35]
+
+
+
+'''Python Objects
+- OOP is the way programs use and manipulate objects to solve problems and 
+model real-world properties
+
+'''
+
+
+class Student:
+    ''' Student Class stype that contain student values '''
+    def __init__(self, name = None, perm = None):
+        self.name = name
+        self.perm = perm
+
+    def setName(self, name):
+        self.name = name
+
+    def setPerm(self, perm):
+            self.perm = perm
+
+    def printAttributes(self):
+         print("Stuent Name: {}, perm: {}"\
+         .format(self.name, self.perm))
+
+    def __repr__(self):
+        return f"{self.name} (perm: {self.perm})"
+
+
+
+s = Student()
+s.setName("Dylan Wawa")
+s.setPerm("A3J2V09")
+s.printAttributes()
+    
+'''Shallow Copy vs Deep Copy
+
+Shallow Copy: Comparing address
+Deep Copy: Comparing values'''
