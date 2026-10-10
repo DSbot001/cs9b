@@ -8,13 +8,21 @@ class Store:
             self.items_dic[category] = []
          self.items_dic[category].append(item) 
 
+    # def removeItem(self, item):
+    #      category = item.category
+    #      if category in self.items_dic:
+    #           for each_item in self.items_dic[category]:
+    #                if each_item.upc == item.upc:
+    #                     self.items_dic[category].remove(each_item)
+    #                     return
+
+
     def removeItem(self, item):
-         category = item.category
-         if category in self.items_dic:
-              for each_item in self.items_dic[category]:
-                   if each_item.upc == item.upc:
-                        self.items_dic[category].remove(each_item)
-                        return
+        for item_list in self.items_dic.values():
+            for each_item in item_list:
+                if each_item.upc == item.upc:
+                    item_list.remove(each_item)
+                    return
     
     def removeCategory(self, category):
             category = category.upper()
@@ -45,7 +53,7 @@ class Store:
         count = 0
         for item_list in self.items_dic.values():
             for each_item in item_list:
-                if each_item.price < 1.00:
+                if each_item.price is not None and each_item.price <= 1.00:
                     count += 1
         return count
                    
