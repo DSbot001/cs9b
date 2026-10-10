@@ -15,7 +15,9 @@ class Store:
                    if each_item.upc == item.upc:
                         self.items_dic[category].remove(each_item)
                         return
+    
     def removeCategory(self, category):
+            category = category.upper()
             if category in self.items_dic:
                 del self.items_dic[category]
 
