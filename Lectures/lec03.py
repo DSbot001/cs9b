@@ -1,4 +1,5 @@
-from lec02 import Golfer
+# from [filename without .py] import [class name/conponent]
+from lec02 import Student 
 import copy
 
 
@@ -147,4 +148,42 @@ def square(x):
 
 
 assert square(2) == 4
-assert square(5) == 26 #AssertionError
+#assert square(5) == 26 #AssertionError
+
+
+
+class Courses:
+    ''' Classing representing a collection of courses.
+    Courses are organized by a dictiionaary where the key is the course number and the corres
+    ponding value is the a list of studrents in the course'''
+
+    def __init__(self):
+        self.courses = {}
+
+    def add_student(self, student, courseID):
+        '''Method to add a student to a course. If the course does not exist, 
+        it is created. If the student is already in the course, 
+        they are not added again.'''
+
+        if self.courses.get(courseID) is None:
+            self.courses[courseID] = [student]
+        elif not student in self.courses.get(courseID):
+            self.courses[courseID].append(student)
+
+    def printCourses(self):
+        '''Method to print all courses and their students.'''
+        for courseID in self.courses:
+            print(courseID, self.courses[courseID])
+
+student1 = Student("Alice", 1112221)
+student2 = Student("Bob", 1112222)
+student3 = Student("Charlie", 1112223) 
+
+UCSB = Courses()
+UCSB.add_student(student1, "CS8")
+UCSB.add_student(student2, "CS9")
+UCSB.add_student(student3, "CS24")
+UCSB.add_student(student1, "CS24") # Alice is also in CS24
+UCSB.add_student(student2, "CS24") # Bob is also in CS24
+
+UCSB.printCourses()
